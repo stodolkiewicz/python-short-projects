@@ -2,13 +2,26 @@
 
 ---
 
-## Projekt 2: Async API Data Aggregator
+## Projekt 2: Crypto Analyzer
 
-Pobieramy dane z kilku publicznych API równolegle, przetwarzamy przez struktury danych, wyświetlamy wyniki.
+Pobieramy dane o kryptowalutach z CoinGecko API (darmowe, bez klucza), przetwarzamy przez struktury danych, wyświetlamy statystyki.
 
-**Co ćwiczymy:** `async/await`, `asyncio`, `@dataclass`, `dict`/`list`/`set` głębiej, `defaultdict`, `Counter`, `json`, `try/except`, type hints (`Optional`, `Any`), `with`, comprehensions.
+**Folder:** `crypto_analyzer/` (obok `expense_tracker/`)
+
+**Co aplikacja robi:**
+- pobiera top 20 kryptowalut z CoinGecko API async
+- grupuje po kategorii/platformie → `defaultdict`
+- liczy ile jest powyżej/poniżej średniej ceny → `Counter`
+- deduplikuje platformy → `set`
+- sortuje po zmianie 24h → `sorted` z `key=` i `lambda`
+- pokazuje top 5 wzrostów i top 5 spadków → slicing
+- parsuje odpowiedź do dataclassów → `@dataclass`
+- wszystko async → `async/await`
+- testy z mockowanym API → `unittest.mock`
 
 **Pipeline:** `HTTP request (async) → JSON → dict → przetwarzanie strukturami → dataclass → output`
+
+**Co ćwiczymy:** `async/await`, `asyncio`, `@dataclass`, `dict`/`list`/`set` głębiej, `defaultdict`, `Counter`, `json`, `try/except`, type hints (`Optional`, `Any`), `with`, comprehensions, `sorted` z `lambda`, slicing, `unittest.mock`.
 
 ---
 

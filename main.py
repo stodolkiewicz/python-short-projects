@@ -1,9 +1,13 @@
+import asyncio
+
+from crypto_analyzer.analyzer import CryptoAnalyzer
+from crypto_analyzer.client import CryptoClient
+from crypto_analyzer.models import Coin
 from expense_tracker.Category import Category
 from expense_tracker.Expense import Expense
 from expense_tracker.Tracker import Tracker
 
-
-def main():
+def project1():
     tracker = Tracker()
 
     food_expense = Expense(
@@ -39,6 +43,26 @@ def main():
     # tracker.summary()
     
     tracker.list_by_category(Category.ENTERTAINMENT)
+
+async def project2():
+    crypto_client = CryptoClient()
+    coins: list[Coin] = await crypto_client.get_top_cryptos(limit=10)
+
+    crypto_analyzer = CryptoAnalyzer()
+    
+    top_gainers = crypto_analyzer.top_gainers(coins, limit=5)
+    top_losers = crypto_analyzer.top_losers(coins, limit=5)
+    # print()
+    above_below = crypto_analyzer.above_below_average(coins)
+    # print(above_below)
+
+    # print(crypto_analyzer.group_by_symbol_prefix(coins))
+    # print(crypto_analyzer.unique_first_letters(coins))
+
+    print(crypto_analyzer.top_gainer_and_loser(coins))
+
+def main():
+    asyncio.run(project2())
 
 if __name__ == "__main__":
     main()
