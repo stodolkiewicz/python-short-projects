@@ -219,6 +219,8 @@ print(rex)          # Rex (Labrador)   ← używa __str__
 rex.bark()          # Rex says: Woof!
 ```
 
+Metody typu `__init__`, `__str__`, `__repr__` nazywa się **dunderami** (double underscore).
+
 ### Dziedziczenie
 
 ```python
@@ -283,6 +285,69 @@ class InsufficientFundsError(Exception):
 
 raise InsufficientFundsError()   # nie musisz podawać wiadomości przy rzucaniu
 ```
+
+---
+
+## Context manager — `with`
+
+Gdy otwierasz zasób (plik, połączenie, lock), musisz go zamknąć — nawet jeśli po drodze poleci wyjątek.
+
+```python
+# ręcznie — brzydko i łatwo zapomnieć
+f = open("data.txt")
+try:
+    content = f.read()
+finally:
+    f.close()
+
+# z `with` — zamknięcie jest gwarantowane
+with open("data.txt") as f:
+    content = f.read()
+# tutaj plik jest już zamknięty, nawet jeśli read() rzucił wyjątek
+```
+
+Analogia do Javy: to dokładnie `try-with-resources`. `with` w Pythonie = `try (var f = new FileReader(...))`.
+
+### Jak to działa pod spodem
+
+Obiekt jest context managerem, jeśli ma dwie metody dunder:
+
+- `__enter__()` — wywoływana na wejściu, jej wynik ląduje w `as f`
+- `__exit__()` — wywoływana na wyjściu, **zawsze**: po sukcesie i po wyjątku
+
+Odpowiednik `AutoCloseable` z Javy, tylko z dwiema metodami zamiast jednej.
+
+```python
+class Timer:
+    def __enter__(self):
+        self.start = time.time()
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        print(f"took {time.time() - self.start:.2f}s")
+
+with Timer():
+    do_something()
+```
+
+### Kilka zasobów naraz
+
+```python
+with open("in.txt") as src, open("out.txt", "w") as dst:
+    dst.write(src.read())
+```
+
+### `async with` — wersja asynchroniczna
+
+Gdy otwarcie lub zamknięcie zasobu samo wymaga czekania (np. nawiązanie połączenia sieciowego), context manager musi być async. Wtedy zamiast `__enter__`/`__exit__` ma `__aenter__`/`__aexit__`, a używasz go przez `async with`:
+
+```python
+async with open_connection() as conn:      # tylko wewnątrz `async def`
+    await conn.send("ping")
+# połączenie zamknięte asynchronicznie
+```
+
+Reguła jest ta sama co przy `await` — `async with` działa wyłącznie w funkcji `async def`.
 
 ---
 
