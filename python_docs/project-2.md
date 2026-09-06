@@ -324,27 +324,3 @@ c["above"] += 1
 # Counter({'above': 2, 'below': 1})
 ```
 
----
-
-## `unittest.mock` — mockowanie w testach
-
-Gdy nie chcesz, żeby test naprawdę dzwonił do API (wolne, kosztowne, niedeterministyczne) — podmieniasz funkcję na fejk.
-
-```python
-from unittest.mock import AsyncMock, patch
-
-@patch("my_module.fetch_user")               # podmień fetch_user w my_module
-async def test_get_username(mock_fetch):
-    mock_fetch.return_value = {"name": "Alice"}    # co fejk zwróci
-
-    result = await get_username(1)
-
-    assert result == "Alice"
-    mock_fetch.assert_called_once_with(1)    # czy zostało wywołane jak trzeba
-```
-
-- `Mock` — dla zwykłych funkcji
-- `AsyncMock` — dla `async def` funkcji (zwracają to co `return_value`, ale są awaitable)
-- `@patch("path.to.thing")` — podmienia obiekt na czas testu
-- `mock.return_value` — co fejk ma zwrócić
-- `mock.assert_called_once_with(...)` — weryfikuje że było wywołane

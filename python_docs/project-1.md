@@ -360,33 +360,6 @@ print(now.strftime("%Y-%m-%d %H:%M"))
 
 ---
 
-## Testy — `pytest`
-
-```python
-# plik: test_math.py
-
-def multiply(a, b):
-    return a * b
-
-def test_multiply_positive():
-    assert multiply(3, 4) == 12
-
-def test_multiply_by_zero():
-    assert multiply(5, 0) == 0
-
-def test_multiply_negative():
-    assert multiply(-2, 3) == -6
-```
-
-```bash
-uv run pytest        # uruchom wszystkie testy
-uv run pytest -v     # verbose — widać nazwy testów
-```
-
-Asercja to stwierdzenie "to musi być prawdą". Jeśli nie jest — test pada.
-
----
-
 ## `if __name__ == "__main__"`
 
 ```python

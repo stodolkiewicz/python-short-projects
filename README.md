@@ -522,33 +522,6 @@ print(now.strftime("%Y-%m-%d %H:%M"))
 
 ---
 
-## Testy — `pytest`
-
-```python
-# plik: test_math.py
-
-def multiply(a, b):
-    return a * b
-
-def test_multiply_positive():
-    assert multiply(3, 4) == 12
-
-def test_multiply_by_zero():
-    assert multiply(5, 0) == 0
-
-def test_multiply_negative():
-    assert multiply(-2, 3) == -6
-```
-
-```bash
-uv run pytest        # uruchom wszystkie testy
-uv run pytest -v     # verbose — widać nazwy testów
-```
-
-Asercja to stwierdzenie "to musi być prawdą". Jeśli nie jest — test pada.
-
----
-
 ## `if __name__ == "__main__"`
 
 ```python
@@ -716,30 +689,5 @@ try:
 except httpx.HTTPError as e:
     print(f"błąd HTTP: {e}")
 ```
-
----
-
-## `unittest.mock` — mockowanie w testach
-
-Gdy nie chcesz, żeby test naprawdę dzwonił do API (wolne, kosztowne, niedeterministyczne) — podmieniasz funkcję na fejk.
-
-```python
-from unittest.mock import AsyncMock, patch
-
-@patch("my_module.fetch_user")               # podmień fetch_user w my_module
-async def test_get_username(mock_fetch):
-    mock_fetch.return_value = {"name": "Alice"}    # co fejk zwróci
-
-    result = await get_username(1)
-
-    assert result == "Alice"
-    mock_fetch.assert_called_once_with(1)    # czy zostało wywołane jak trzeba
-```
-
-- `Mock` — dla zwykłych funkcji
-- `AsyncMock` — dla `async def` funkcji (zwracają to co `return_value`, ale są awaitable)
-- `@patch("path.to.thing")` — podmienia obiekt na czas testu
-- `mock.return_value` — co fejk ma zwrócić
-- `mock.assert_called_once_with(...)` — weryfikuje że było wywołane
 
 <!-- nowa wiedza ląduje powyżej tej linii -->
