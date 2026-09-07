@@ -411,7 +411,7 @@ Pusty plik `__init__.py` w katalogu mówi Pythonowi: "ten katalog to paczka (pac
 Bez niego Python nie pozwoli robić importów z tego katalogu:
 
 ```python
-from expense_tracker.Expense import Expense   # działa — bo jest __init__.py
+from expense_tracker.expense import Expense  # działa — bo jest __init__.py
 ```
 
 To jak `package` w Javie — bez deklaracji paczki klasa jest "bezdomna".

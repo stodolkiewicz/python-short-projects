@@ -48,7 +48,7 @@ wywołujesz metody, widzisz wyniki w terminalu.
 
 Wydatki tworzymy bezpośrednio w kodzie, jak w Javie `new Obiekt()`. Brak CLI, brak plików — wszystko żyje w pamięci.
 
-Mamy dwie klasy: `Expense` (jeden wydatek) i `Tracker` (kolekcja wydatków z metodami).
+Mamy dwie klasy: `expense.py` (jeden wydatek) i `Tracker` (kolekcja wydatków z metodami).
 
 `Tracker` umie:
 - `add` — dodaj wydatek
@@ -74,7 +74,7 @@ first-project/
 
 | Krok | Co dodajemy                          | Python którego ćwiczymy               |
 |------|--------------------------------------|---------------------------------------|
-| 1    | Klasa `Expense`                       | klasy, `__init__`, `__str__`, `__repr__` |
+| 1    | Klasa `expense.py`                       | klasy, `__init__`, `__str__`, `__repr__` |
 | 2    | Klasa `Tracker` — add, list           | klasy, `list`, `for`, f-strings       |
 | 3    | Metoda `delete`                       | indeksy, wyjątki                      |
 | 4    | Metoda `summary`                      | `defaultdict`, `Counter`, sortowanie  |

@@ -3,9 +3,11 @@ import asyncio
 from crypto_analyzer.analyzer import CryptoAnalyzer
 from crypto_analyzer.client import CryptoClient
 from crypto_analyzer.models import Coin
-from expense_tracker.Category import Category
-from expense_tracker.Expense import Expense
+from expense_tracker.category import Category
+from expense_tracker.expense import Expense
 from expense_tracker.Tracker import Tracker
+from task_manager.cli import run
+
 
 def project1():
     tracker = Tracker()
@@ -61,8 +63,14 @@ async def project2():
 
     print(crypto_analyzer.top_gainer_and_loser(coins))
 
+def project3():
+    run()
+
+
 def main():
-    asyncio.run(project2())
+    # asyncio.run(project2())
+
+    project3()
 
 if __name__ == "__main__":
     main()

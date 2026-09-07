@@ -1,7 +1,7 @@
 import pytest
 
-from expense_tracker.Category import Category
-from expense_tracker.Expense import Expense
+from expense_tracker.category import Category
+from expense_tracker.expense import Expense
 from expense_tracker.Tracker import Tracker
 
 @pytest.fixture

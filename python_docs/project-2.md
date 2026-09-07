@@ -4,31 +4,7 @@ Nowe rzeczy z Pythona poznane podczas budowy Crypto Analyzera.
 
 ---
 
-## `@dataclass` — skrócony zapis klasy
-
-Python generuje `__init__`, `__repr__` i `__eq__` automatycznie na podstawie zadeklarowanych pól.
-
-```python
-from dataclasses import dataclass
-
-@dataclass
-class Point:
-    x: float
-    y: float
-
-p = Point(1.0, 2.5)
-# Python sam generuje __init__, __repr__, __eq__
-
-# wartości domyślne
-@dataclass
-class User:
-    name: str
-    age: int = 18
-```
-
-Analogia do Javy: jak Lombok `@Data` — generuje boilerplate za Ciebie.
-
-### `@classmethod` — statyczna fabryka
+## `@classmethod` — statyczna fabryka
 
 ```python
 @dataclass
@@ -301,20 +277,9 @@ Działa też na stringach: `"abcdef"[1:4]` → `"bcd"`.
 
 ---
 
-## `Counter` — zliczanie kategorii
+## `Counter` — inkrementacja ręczna
 
-```python
-from collections import Counter
-
-words = ["apple", "banana", "apple", "cherry", "apple"]
-c = Counter(words)
-# Counter({'apple': 3, 'banana': 1, 'cherry': 1})
-
-c["apple"]           # 3
-c.most_common(2)     # [('apple', 3), ('banana', 1)]
-```
-
-Możesz też inkrementować ręcznie — `Counter` dziedziczy po `dict`, więc `c["klucz"]` działa jak słownik. Nowy klucz startuje automatycznie od `0` (jak `defaultdict(int)`):
+`Counter` dziedziczy po `dict`, więc `c["klucz"]` działa jak słownik. Nowy klucz startuje automatycznie od `0` (jak `defaultdict(int)`):
 
 ```python
 c = Counter()

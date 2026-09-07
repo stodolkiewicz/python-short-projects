@@ -1,5 +1,5 @@
-from expense_tracker.Category import Category
-from expense_tracker.InvalidExpenseException import InvalidExpenseException
+from expense_tracker.category import Category
+from expense_tracker.invalidExpenseException import InvalidExpenseException
 
 
 class Expense:
