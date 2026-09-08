@@ -6,6 +6,7 @@ from crypto_analyzer.models import Coin
 from expense_tracker.category import Category
 from expense_tracker.expense import Expense
 from expense_tracker.Tracker import Tracker
+from pydantic_tutorial import p1
 from task_manager.cli import run
 
 
@@ -68,9 +69,8 @@ def project3():
 
 
 def main():
-    # asyncio.run(project2())
-
-    project3()
+    p1.run()
+    # p1.run2()
 
 if __name__ == "__main__":
     main()

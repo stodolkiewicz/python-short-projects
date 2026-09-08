@@ -15,6 +15,8 @@
 - Generator expressions i `next()`
 - `dataclasses.asdict`
 - `**dict` do konstruktora
+- Truthiness
+- Comprehensions zbiorowe
 
 ---
 
@@ -23,24 +25,23 @@
 1. `else`/`finally`
 2. Pydantic
 3. FastAPI
-4. Truthiness
-5. Unpacking z `*rest`
-6. `break` / `continue`
-7. Metody `dict` (`update`, `setdefault`)
-8. Metody `list` (`sort`, `reverse`, `index`, `insert`, `copy`)
-9. `map()` / `filter()`
-10. `zip()`
-11. Comprehensions słownikowe i zbiorowe
-12. `@property`
-13. Operacje na `set` (`union`, `intersection`, `difference`)
-14. `@staticmethod`
-15. Magic methods (`__eq__`, `__hash__`, `__len__`, `__iter__`, `__contains__`)
-16. `yield` jako generator
-17. `copy` vs `deepcopy`
-18. `itertools`, `functools.lru_cache`
-19. `Union[X, Y]` / `TypeVar`
-20. `match/case`, `re`, `os`/`sys`, `pathlib.Path`
-21. `{value!r}` we f-stringu, multiline strings (`"""`)
+4. Unpacking z `*rest`
+5. `break` / `continue`
+6. Metody `dict` (`update`, `setdefault`)
+7. Metody `list` (`sort`, `reverse`, `index`, `insert`, `copy`)
+8. `map()` / `filter()`
+9. `zip()`
+10. Comprehensions słownikowe
+11. `@property`
+12. Operacje na `set` (`union`, `intersection`, `difference`)
+13. `@staticmethod`
+14. Magic methods (`__eq__`, `__hash__`, `__len__`, `__iter__`, `__contains__`)
+15. `yield` jako generator
+16. `copy` vs `deepcopy`
+17. `itertools`, `functools.lru_cache`
+18. Generyki (PEP 695 — `def foo[T](...)`, `class Foo[T]:`)
+19. `match/case`, `re`, `os`/`sys`, `pathlib.Path`
+20. `{value!r}` we f-stringu, multiline strings (`"""`)
 
 ---
 
